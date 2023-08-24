@@ -42,7 +42,7 @@
 //     dinner: 'pizza'
 // }
 
-// const backPackMeals = {...daytime, ...eveningtime}
+// const backPackMeals = {daytime, eveningtime}
 
 // console.log(backPackMeals)
 
@@ -68,7 +68,7 @@
 // const newObject = {object1, object2, object3}
 // console.log(newObject);
 
-// // Using Spread Operator
+// Using Spread Operator
 // const brandNewObject = {...object1, ...object2, ...object3}
 // console.log(brandNewObject);
 
@@ -84,10 +84,10 @@ const object3 = {5: "a", 6: "b"}
 // console.log(object1)
 
 // Solution
-const brandNewObject = Object.assign({},object1, object2, object3)
-console.log(brandNewObject)
+// const brandNewObject = Object.assign({},object1, object2, object3)
+// console.log(brandNewObject)
 
-console.log(object1)
+// console.log(object1)
 /*
 Syntax: -
 Object.assign(target, ...sources)
