@@ -166,6 +166,43 @@ em {
 
 /* 🔴 ADD YOU STYLING FOR FORECAST WIDGET */
 
+.nav .nav-elements .forecast {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    height: 350px;
+    min-width: 250px;
+}
+
+.nav .nav-elements .forecast .prefs,
+.nav .nav-elements .forecast .results {
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.nav .nav-elements .forecast .prefs h3,
+.nav .nav-elements .forecast .results h3{
+    text-align: center;
+    background-color: black;
+    padding: 0.2em;
+}
+
+.nav .nav-elements .forecast .prefs {
+    text-align: center;
+}
+
+
+
 
 @media screen and (min-width: 600px) {
     .nav .nav-elements {

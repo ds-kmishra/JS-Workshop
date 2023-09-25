@@ -17,6 +17,7 @@
       <div class="branding">
         <a href="#home"><img src="images/hpluslogo.svg" alt="Logo - H Plus Sports"></a>
       </div><!-- branding -->
+        
       <ul class="navbar">
         <li><a href="#home">home</a></li>
         <li><a href="#history">history</a></li>
@@ -25,8 +26,35 @@
         <li><a href="#people">people</a></li>
       </ul><!-- navbar -->
 
-      <!-- 🔴 WELL YOU NEED TO CODE HERE 👩🏽‍💻-->
-      <!-- 🔴 ADD YOU HTML  -->
+      <div class="forecast">
+        <div class="prefs">
+          <form>
+            <h3>Activity Forecast</h3>
+            <div>
+              <label for="location" class="hidden">Location</label>
+              <input placeholder="Enter the location" id="location">
+            </div>
+            <div class="button">
+              <input type="button" value="Get Forecast" class="forecast-button">
+            </div>
+            <div class="conditions">
+
+              
+            </div> <!-- 🔴 Dynamic -->
+          </form>
+        </div>
+        <div class="results">
+          <h3>Activities</h3>
+          <div class="options">
+            <div id="solo">Solo</div>
+            <div id="team">Team</div>
+            <div id="all">All</div>
+          </div>
+          <div class="activities"></div> <!-- 🔴 Dynamic -->
+        </div>
+      </div><!-- forecast -->
+
+
 
 
     </div><!-- container nav-elements -->
@@ -225,7 +253,7 @@
 </footer><!-- footer -->
 
 
-<script src="script.js"></script>
+<script src="js/script.js"></script>
 
 </body>
 </html>
