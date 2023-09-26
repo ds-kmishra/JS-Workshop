@@ -201,8 +201,94 @@ em {
     text-align: center;
 }
 
+.nav .nav-elements .forecast .prefs .hidden {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
 
+.nav .nav-elements .forecast .prefs form div {
+    display: inline-block;
+}
 
+.nav .nav-elements .forecast .prefs .conditions .city {
+    font-weight: bold;
+}
+/*Transitions*/
+
+.nav .nav-elements .forecast .results .options {
+    text-align: center;
+    border-bottom: 1px solid white;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.nav .nav-elements .forecast .results .options div {
+    display: inline-block;
+    width: 33.33%;
+    padding: 0.25em 1em;
+    margin: 0;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.nav .nav-elements .forecast .results .options #team {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+
+.nav .nav-elements .forecast .results .options div:hover {
+    background-color: white;
+}
+
+.nav .nav-elements .forecast .results .options .selected {
+    background-color: #bfc406;
+}
+
+.nav .nav-elements .forecast .results .options .selected:hover {
+    background-color: #bfc406;
+}
+
+.nav .nav-elements .forecast .results .activities {
+    max-height: 125px;
+    overflow: scroll;
+}
+
+.nav .nav-elements .forecast .results .activities ul {
+    margin: 0.25em 0 0;
+}
+
+.nav .nav-elements .forecast .results {
+/*    display: none; */
+    height: auto;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.nav .nav-elements .forecast .open {
+/*    display: block; */
+    max-height: 300px;
+    border: 1px solid white;
+    border-top: none;
+}
+    
 
 @media screen and (min-width: 600px) {
     .nav .nav-elements {
