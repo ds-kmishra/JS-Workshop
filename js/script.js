@@ -24,17 +24,43 @@ function addTransaction(event) {
         const transaction = {
             id : generateID(),
             text: text.value,
-            amount: amount.value
+            amount: +amount.value
         };
 
         transactions.push(transaction);
 
         addTransactionsDOM(transaction);
 
+        updateValues();
+
         console.log(transactions);
 
     }
     
+}
+
+// Update the balance, income and expense
+function updateValues() {
+
+    const amounts = transactions.map(transaction => transaction.amount);
+    
+    console.log(amounts);
+    const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
+
+    const income = amounts
+                    .filter(amount => amount>0)
+                    .reduce((acc, item) => (acc += item), 0).toFixed(2);
+
+    const expense = (amounts
+                    .filter(amount => amount<0)
+                    .reduce((acc, item) => (acc += item), 0)*-1).toFixed(2)
+
+
+    balance.innerText = `$${total}`;
+    money_plus.innerText = `$${income}`;
+    money_minus.innerText = `$${expense}`;
+    
+
 }
 
 // Generate random ID
@@ -62,6 +88,9 @@ function addTransactionsDOM(transaction) {
 
 function removeTransaction(id) {
     transactions = transactions.filter(transactions => transactions.id != id);
+
+
+
 }
 
 
