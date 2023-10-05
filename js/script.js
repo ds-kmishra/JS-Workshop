@@ -6,14 +6,13 @@ const form = document.querySelector('#form');
 const text = document.querySelector('#text');
 const amount = document.querySelector('#amount');
 
-const dummyTransactions = [
-    { id: 1, text: 'Flower', amount: -20 },
-    { id: 2, text: 'Salary', amount: 300 },
-    { id: 3, text: 'Book', amount: -10 },
-    { id: 4, text: 'Camera', amount: 150 }    
-];
 
-const transactions = dummyTransactions;
+
+const localStorageTransactions = JSON.parse(localStorage.getItem('transactions'));
+
+
+let transactions =
+        localStorage.getItem('transactions') !== null ? localStorageTransactions : [] ;
 
 function addTransaction(event) {
     event.preventDefault();
@@ -33,19 +32,26 @@ function addTransaction(event) {
 
         updateValues();
 
-        console.log(transactions);
+        updateLocalStorage();
 
-    }
-    
+        text.value = '';
+        amount.value = '';
+    } 
 }
+
+// Update local storage transactions 
+function updateLocalStorage() {
+    localStorage.setItem('transactions', JSON.stringify(transactions));
+}
+
 
 // Update the balance, income and expense
 function updateValues() {
 
     const amounts = transactions.map(transaction => transaction.amount);
     
-    console.log(amounts);
-    const total = amounts.reduce((acc, item) => (acc += item), 0).toFixed(2);
+    const total = amounts
+                    .reduce((acc, item) => (acc += item), 0).toFixed(2);
 
     const income = amounts
                     .filter(amount => amount>0)
@@ -59,7 +65,6 @@ function updateValues() {
     balance.innerText = `$${total}`;
     money_plus.innerText = `$${income}`;
     money_minus.innerText = `$${expense}`;
-    
 
 }
 
@@ -74,28 +79,32 @@ function addTransactionsDOM(transaction) {
 
         const item = document.createElement('li');
         item.classList.add(transaction.amount<0 ? 'minus' : 'plus');
-        /*
-         Cash <span>-$300</span><button class="delete-btn">x</button>        
-        */
 
-        item.innerHTML= `
-            ${transaction.text} <span>${sign}$${Math.abs(transaction.amount)}</span>
-            <button class="delete-btn" onclick = "removeTransaction(${transaction.id})">x</button>
-        `; 
+        item.innerHTML = `
+                            ${transaction.text} <span>${sign}${Math.abs(
+                            transaction.amount
+                        )}</span> <button class="delete-btn" onclick="removeTransaction(${
+                            transaction.id
+                        })">x</button>
+                        `;
 
         list.appendChild(item);
 }
 
+// Remove transaction by ID
 function removeTransaction(id) {
-    transactions = transactions.filter(transactions => transactions.id != id);
-
-
-
+    transactions = transactions.filter(transaction => transaction.id !== id);
+    updateLocalStorage();
+    init();
 }
 
-
+// Init app
 function init(){
+    list.innerHTML = '';
 
+    transactions.forEach(addTransactionsDOM);
+
+    updateValues();
 }
 
 init();
